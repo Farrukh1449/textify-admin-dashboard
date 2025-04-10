@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { 
-  Tool, 
+  Wrench, 
   BookText, 
   FileText, 
   Shield, 
@@ -60,7 +60,7 @@ const Dashboard = () => {
       value: tools,
       description: "Manage your image to text conversion tools",
       path: "/admin/tools",
-      icon: <Tool className="h-8 w-8 text-admin-primary" />
+      icon: <Wrench className="h-8 w-8 text-admin-primary" />
     },
     {
       title: "Blog Posts",

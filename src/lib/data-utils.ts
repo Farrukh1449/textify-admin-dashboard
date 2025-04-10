@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from "uuid";
 import { Tool, BlogPost, StaticPage, ToolType } from "@/types/models";
 
@@ -16,7 +15,6 @@ let toolsData: Tool[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     title: "Image to Text Converter | Extract Text from Images",
-    description: "Convert images to text with our free online tool. Extract text from photos, screenshots, and scanned documents.",
     keywords: "image to text, ocr, optical character recognition, extract text from image",
     ogImage: "/placeholder.svg",
     twitterImage: "/placeholder.svg",
@@ -37,7 +35,6 @@ let toolsData: Tool[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     title: "Online Text Editor | Format and Edit Text",
-    description: "Edit and format text online with our free text editor tool.",
     keywords: "text editor, online text editor, format text",
     ogImage: "/placeholder.svg",
     twitterImage: "/placeholder.svg",
@@ -60,7 +57,6 @@ let blogsData: BlogPost[] = [
     publishedAt: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: "How to Extract Text from Images | Complete Guide",
     description: "Learn the best ways to extract text from images using OCR technology. Step-by-step guide with examples.",
     keywords: "extract text from images, ocr guide, image to text tutorial",
     ogImage: "/placeholder.svg",
@@ -81,7 +77,6 @@ let pagesData: StaticPage[] = [
     lastUpdated: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: "Privacy Policy | TextiFy",
     description: "Privacy Policy for TextiFy - Learn how we handle your data",
     keywords: "privacy policy, privacy, data protection",
     ogImage: "/placeholder.svg",
@@ -99,7 +94,6 @@ let pagesData: StaticPage[] = [
     lastUpdated: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: "Terms and Conditions | TextiFy",
     description: "Terms and Conditions for using TextiFy services",
     keywords: "terms, conditions, legal, terms of service",
     ogImage: "/placeholder.svg",
@@ -117,7 +111,6 @@ let pagesData: StaticPage[] = [
     lastUpdated: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: "DMCA Policy | TextiFy",
     description: "DMCA Policy for TextiFy - Copyright information",
     keywords: "dmca, copyright, takedown",
     ogImage: "/placeholder.svg",
@@ -135,7 +128,6 @@ let pagesData: StaticPage[] = [
     lastUpdated: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: "Disclaimer | TextiFy",
     description: "Disclaimer for TextiFy services",
     keywords: "disclaimer, liability",
     ogImage: "/placeholder.svg",

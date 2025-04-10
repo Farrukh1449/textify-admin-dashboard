@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { 
   LayoutDashboard, 
-  Tool, 
+  Wrench, 
   BookText, 
   FileText, 
   Shield, 
@@ -115,7 +115,7 @@ const AdminSidebar = () => {
 
           <SidebarSection title="Content Management">
             <SidebarItem 
-              icon={Tool} 
+              icon={Wrench} 
               title="Tools" 
               path="/admin/tools" 
               onClick={closeSidebar}
@@ -132,25 +132,25 @@ const AdminSidebar = () => {
             <SidebarItem 
               icon={Shield} 
               title="Privacy Policy" 
-              path="/admin/pages/privacy-policy" 
+              path="/admin/pages/privacy-policy/edit" 
               onClick={closeSidebar}
             />
             <SidebarItem 
               icon={Scale} 
               title="Terms & Conditions" 
-              path="/admin/pages/terms-conditions" 
+              path="/admin/pages/terms-conditions/edit" 
               onClick={closeSidebar}
             />
             <SidebarItem 
               icon={FileText} 
               title="DMCA Policy" 
-              path="/admin/pages/dmca-policy" 
+              path="/admin/pages/dmca-policy/edit" 
               onClick={closeSidebar}
             />
             <SidebarItem 
               icon={AlertTriangle} 
               title="Disclaimer" 
-              path="/admin/pages/disclaimer" 
+              path="/admin/pages/disclaimer/edit" 
               onClick={closeSidebar}
             />
           </SidebarSection>
