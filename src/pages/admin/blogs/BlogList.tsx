@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
 import PageHeader from "@/components/PageHeader";
+import StatusToggle from "@/components/StatusToggle";
 import { BlogPost } from "@/types/models";
 import { fetchBlogPosts, updateBlogPost, deleteBlogPost } from "@/lib/data-utils";
 
@@ -55,6 +56,32 @@ const BlogList = () => {
       }
     } catch (error) {
       toast.error("Failed to update blog post status");
+      console.error(error);
+    }
+  };
+
+  const handleIndexChange = async (id: string, isIndexed: boolean) => {
+    try {
+      const updated = await updateBlogPost(id, { isIndexed });
+      if (updated) {
+        setBlogs(blogs.map(blog => blog.id === id ? { ...blog, isIndexed } : blog));
+        toast.success(`Blog post is now ${isIndexed ? 'indexed' : 'not indexed'}`);
+      }
+    } catch (error) {
+      toast.error("Failed to update indexing status");
+      console.error(error);
+    }
+  };
+
+  const handleFollowChange = async (id: string, isFollowed: boolean) => {
+    try {
+      const updated = await updateBlogPost(id, { isFollowed });
+      if (updated) {
+        setBlogs(blogs.map(blog => blog.id === id ? { ...blog, isFollowed } : blog));
+        toast.success(`Blog post links are now ${isFollowed ? 'followed' : 'not followed'}`);
+      }
+    } catch (error) {
+      toast.error("Failed to update follow status");
       console.error(error);
     }
   };
@@ -121,6 +148,7 @@ const BlogList = () => {
               <TableRow>
                 <TableHead>Title</TableHead>
                 <TableHead>Published</TableHead>
+                <TableHead>SEO Options</TableHead>
                 <TableHead>Last Updated</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
@@ -131,13 +159,31 @@ const BlogList = () => {
                   <TableCell className="font-medium">{blog.title}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <Switch
-                        checked={blog.isPublished}
-                        onCheckedChange={(checked) => handleStatusChange(blog.id, checked)}
+                      <StatusToggle
+                        pressed={blog.isPublished}
+                        onPressedChange={(pressed) => handleStatusChange(blog.id, pressed)}
+                        enabledText="Active"
+                        disabledText="Inactive"
                       />
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-gray-500 ml-2">
                         {blog.isPublished ? formatDate(blog.publishedAt) : "Draft"}
                       </span>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex flex-wrap gap-2">
+                      <StatusToggle
+                        pressed={blog.isIndexed}
+                        onPressedChange={(pressed) => handleIndexChange(blog.id, pressed)}
+                        enabledText="Index"
+                        disabledText="Noindex"
+                      />
+                      <StatusToggle
+                        pressed={blog.isFollowed}
+                        onPressedChange={(pressed) => handleFollowChange(blog.id, pressed)}
+                        enabledText="Follow"
+                        disabledText="Nofollow"
+                      />
                     </div>
                   </TableCell>
                   <TableCell>

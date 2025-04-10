@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
 import PageHeader from "@/components/PageHeader";
+import StatusToggle from "@/components/StatusToggle";
 import { Tool } from "@/types/models";
 import { fetchTools, updateTool, deleteTool } from "@/lib/data-utils";
 
@@ -51,6 +52,32 @@ const ToolList = () => {
       }
     } catch (error) {
       toast.error("Failed to update tool status");
+      console.error(error);
+    }
+  };
+
+  const handleIndexChange = async (id: string, isIndexed: boolean) => {
+    try {
+      const updated = await updateTool(id, { isIndexed });
+      if (updated) {
+        setTools(tools.map(tool => tool.id === id ? { ...tool, isIndexed } : tool));
+        toast.success(`Tool is now ${isIndexed ? 'indexed' : 'not indexed'}`);
+      }
+    } catch (error) {
+      toast.error("Failed to update indexing status");
+      console.error(error);
+    }
+  };
+
+  const handleFollowChange = async (id: string, isFollowed: boolean) => {
+    try {
+      const updated = await updateTool(id, { isFollowed });
+      if (updated) {
+        setTools(tools.map(tool => tool.id === id ? { ...tool, isFollowed } : tool));
+        toast.success(`Tool links are now ${isFollowed ? 'followed' : 'not followed'}`);
+      }
+    } catch (error) {
+      toast.error("Failed to update follow status");
       console.error(error);
     }
   };
@@ -124,7 +151,8 @@ const ToolList = () => {
                 <TableHead>Name</TableHead>
                 <TableHead>Type</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead>Actions</TableHead>
+                <TableHead className="text-right">Options</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -137,10 +165,30 @@ const ToolList = () => {
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Switch
-                      checked={tool.isActive}
-                      onCheckedChange={(checked) => handleStatusChange(tool.id, checked)}
-                    />
+                    <div className="flex items-center gap-2">
+                      <StatusToggle
+                        pressed={tool.isActive}
+                        onPressedChange={(pressed) => handleStatusChange(tool.id, pressed)}
+                        enabledText="Active"
+                        disabledText="Inactive"
+                      />
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex flex-wrap gap-2">
+                      <StatusToggle
+                        pressed={tool.isIndexed}
+                        onPressedChange={(pressed) => handleIndexChange(tool.id, pressed)}
+                        enabledText="Index"
+                        disabledText="Noindex"
+                      />
+                      <StatusToggle
+                        pressed={tool.isFollowed}
+                        onPressedChange={(pressed) => handleFollowChange(tool.id, pressed)}
+                        enabledText="Follow"
+                        disabledText="Nofollow"
+                      />
+                    </div>
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
