@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				admin: {
+					primary: '#8B5CF6',
+					'primary-hover': '#7C3AED',
+					secondary: '#F3F4F6',
+					'secondary-hover': '#E5E7EB',
+					accent: '#C4B5FD',
+					'accent-hover': '#A78BFA',
+					background: '#F9FAFB',
+					foreground: '#1F2937',
+					border: '#E5E7EB',
+					success: '#10B981',
+					warning: '#FBBF24',
+					danger: '#EF4444',
+					'danger-hover': '#DC2626'
 				}
 			},
 			borderRadius: {
