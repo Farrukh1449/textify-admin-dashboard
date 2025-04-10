@@ -13,7 +13,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
 import PageHeader from "@/components/PageHeader";
 import StatusToggle from "@/components/StatusToggle";
@@ -93,7 +92,8 @@ const ToolList = () => {
     try {
       const success = await deleteTool(toolToDelete);
       if (success) {
-        setTools(tools.filter(tool => tool.id !== toolToDelete));
+        // Remove the deleted tool from state to update UI immediately
+        setTools(prevTools => prevTools.filter(tool => tool.id !== toolToDelete));
         toast.success("Tool deleted successfully");
       } else {
         toast.error("Failed to delete tool");

@@ -13,7 +13,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
 import PageHeader from "@/components/PageHeader";
 import StatusToggle from "@/components/StatusToggle";
@@ -97,7 +96,8 @@ const BlogList = () => {
     try {
       const success = await deleteBlogPost(blogToDelete);
       if (success) {
-        setBlogs(blogs.filter(blog => blog.id !== blogToDelete));
+        // Remove the deleted blog from state to update UI immediately
+        setBlogs(prevBlogs => prevBlogs.filter(blog => blog.id !== blogToDelete));
         toast.success("Blog post deleted successfully");
       } else {
         toast.error("Failed to delete blog post");

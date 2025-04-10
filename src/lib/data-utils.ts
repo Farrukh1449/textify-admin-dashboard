@@ -176,7 +176,7 @@ export const updateTool = (id: string, tool: Partial<Tool>): Promise<Tool | null
 export const deleteTool = (id: string): Promise<boolean> => {
   const initialLength = toolsData.length;
   toolsData = toolsData.filter(t => t.id !== id);
-  return Promise.resolve(initialLength !== toolsData.length);
+  return Promise.resolve(initialLength > toolsData.length);
 };
 
 // Blog CRUD operations
@@ -216,7 +216,7 @@ export const updateBlogPost = (id: string, post: Partial<BlogPost>): Promise<Blo
 export const deleteBlogPost = (id: string): Promise<boolean> => {
   const initialLength = blogsData.length;
   blogsData = blogsData.filter(p => p.id !== id);
-  return Promise.resolve(initialLength !== blogsData.length);
+  return Promise.resolve(initialLength > blogsData.length);
 };
 
 // Page CRUD operations
