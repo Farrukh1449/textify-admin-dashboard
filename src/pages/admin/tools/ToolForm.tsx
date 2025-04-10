@@ -39,7 +39,6 @@ const ToolForm = () => {
     type: "converter",
     featuredImage: "",
     isActive: true,
-    title: "",
     description: "",
     keywords: "",
     ogImage: "",

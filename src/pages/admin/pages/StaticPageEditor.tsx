@@ -22,7 +22,6 @@ const StaticPageEditor = () => {
     slug: "",
     content: "",
     lastUpdated: "",
-    title: "",
     description: "",
     keywords: "",
     ogImage: "",

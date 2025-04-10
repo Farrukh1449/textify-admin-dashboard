@@ -32,7 +32,6 @@ const BlogForm = () => {
     featuredImage: "",
     isPublished: false,
     publishedAt: null,
-    title: "",
     description: "",
     keywords: "",
     ogImage: "",
@@ -82,7 +81,6 @@ const BlogForm = () => {
       setBlog(prev => ({ 
         ...prev, 
         slug: newSlug,
-        title: blog.title,
         canonical: `https://example.com/blog/${newSlug}`
       }));
       setTitleChanged(false);
