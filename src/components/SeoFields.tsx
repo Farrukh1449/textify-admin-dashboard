@@ -1,4 +1,3 @@
-
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -14,6 +13,34 @@ interface SeoFieldsProps {
 const SeoFields = ({ values, onChange }: SeoFieldsProps) => {
   return (
     <div className="space-y-6 bg-white p-6 rounded-lg border border-gray-200">
+      <div className="pt-4 border-b">
+        <h4 className="text-md font-medium mb-4">Indexing Settings</h4>
+        
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h5 className="font-medium">Follow links</h5>
+              <p className="text-sm text-gray-500">Allow search engines to follow links on this page</p>
+            </div>
+            <Switch 
+              checked={values.isFollowed ?? true}
+              onCheckedChange={(checked) => onChange("isFollowed", checked)}
+            />
+          </div>
+          
+          <div className="flex items-center justify-between">
+            <div>
+              <h5 className="font-medium">Index this page</h5>
+              <p className="text-sm text-gray-500">Allow search engines to index this page</p>
+            </div>
+            <Switch 
+              checked={values.isIndexed ?? true}
+              onCheckedChange={(checked) => onChange("isIndexed", checked)}
+            />
+          </div>
+        </div>
+      </div>
+
       <h3 className="text-lg font-medium border-b pb-2">SEO Settings</h3>
       
       <div className="space-y-4">
@@ -81,34 +108,6 @@ const SeoFields = ({ values, onChange }: SeoFieldsProps) => {
               value={values.facebookImage || ""}
               onChange={(value) => onChange("facebookImage", value)}
             />
-          </div>
-        </div>
-        
-        <div className="pt-4 border-t">
-          <h4 className="text-md font-medium mb-4">Indexing Settings</h4>
-          
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h5 className="font-medium">Index this page</h5>
-                <p className="text-sm text-gray-500">Allow search engines to index this page</p>
-              </div>
-              <Switch 
-                checked={values.isIndexed ?? true}
-                onCheckedChange={(checked) => onChange("isIndexed", checked)}
-              />
-            </div>
-            
-            <div className="flex items-center justify-between">
-              <div>
-                <h5 className="font-medium">Follow links</h5>
-                <p className="text-sm text-gray-500">Allow search engines to follow links on this page</p>
-              </div>
-              <Switch 
-                checked={values.isFollowed ?? true}
-                onCheckedChange={(checked) => onChange("isFollowed", checked)}
-              />
-            </div>
           </div>
         </div>
       </div>
